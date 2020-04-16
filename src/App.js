@@ -18,8 +18,16 @@ function App() {
     setCart([...cart, item]);
   };
 
+  const removeItem = (itemId) => {
+    console.log(itemId); // Looks to see what's returned
+    console.log(cart); // Looks to see what's in the cart currently
+    const newCart = cart.filter((item) => item.id !== itemId); // filter through the current cart and return all that do not match the id that's returned
+    console.log(newCart); //Check to make sure it all looks right
+    setCart(newCart); // Set our new state
+  };
+
   return (
-    <ProductContext.Provider value={{ products, addItem }}>
+    <ProductContext.Provider value={{ products, addItem, removeItem }}>
       <CartContext.Provider value={{ cart }}>
         <div className='App'>
           <Navigation cart={cart} />
